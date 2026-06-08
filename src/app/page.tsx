@@ -101,8 +101,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Card */}
+            {/* Right: Image + Card */}
             <div className="hidden lg:block">
+              {/* Hero medical image */}
+              <div style={{ borderRadius: 24, overflow: "hidden", marginBottom: 16, position: "relative", height: 240 }}>
+                <img
+                  src="https://images.unsplash.com/photo-1616671276441-2f2c277b8bf6?w=700&q=80&fit=crop"
+                  alt="קנאביס רפואי"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.75) saturate(0.9)" }}
+                />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(13,61,42,0.7) 0%, transparent 60%)" }} />
+                <div style={{ position: "absolute", bottom: 16, right: 20, color: "rgba(247,245,240,0.7)", fontSize: 12 }}>
+                  © Unsplash · לצורכי המחשה בלבד
+                </div>
+              </div>
               <div style={{ background: "rgba(247,245,240,0.04)", border: "1px solid rgba(247,245,240,0.1)", borderRadius: 24 }}
                 className="p-8 backdrop-blur-sm">
                 <div style={{ color: "#c9a84c", fontSize: 13, fontWeight: 600, letterSpacing: "0.08em" }}
