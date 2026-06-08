@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { renderToBuffer } from '@react-pdf/renderer'
+import { renderToBuffer, Document } from '@react-pdf/renderer'
 import { EligibilityReportPDF } from '@/lib/pdf/eligibility-report'
-import { createElement } from 'react'
+import { createElement, type ReactElement } from 'react'
+import type { DocumentProps } from '@react-pdf/renderer'
 
 const schema = z.object({
   full_name: z.string().min(2),
@@ -121,9 +122,8 @@ export async function POST(req: NextRequest) {
         created_at: now,
       }
 
-      const pdfBuffer = await renderToBuffer(
-        createElement(EligibilityReportPDF, { data: reportData })
-      )
+      const pdfElement = createElement(EligibilityReportPDF, { data: reportData }) as ReactElement<DocumentProps>
+      const pdfBuffer = await renderToBuffer(pdfElement)
 
       const fileName = `eligibility-reports/${lead.id}.pdf`
 
