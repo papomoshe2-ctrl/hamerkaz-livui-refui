@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Assistant } from "next/font/google";
+import { Assistant, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
 
 const assistant = Assistant({
   subsets: ["hebrew", "latin"],
   variable: "--font-assistant",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const frankRuhl = Frank_Ruhl_Libre({
+  subsets: ["hebrew", "latin"],
+  variable: "--font-frank",
+  weight: ["300", "400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="he" dir="rtl" className={assistant.variable}>
+    <html lang="he" dir="rtl" className={`${assistant.variable} ${frankRuhl.variable}`}>
       <body className="min-h-screen bg-white font-sans antialiased">
         {children}
       </body>
